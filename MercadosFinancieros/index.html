@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Otros Mercados Financieros</title>
+
+  <!-- Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #ffffff;
+      min-height: 100vh;
+      padding: 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow-x: hidden;
+    }
+
+    .contenedor {
+      width: 100%;
+      max-width: 520px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .mercado {
+      width: 100%;
+      min-height: 68px;
+
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;   /* 🔹 texto a la izquierda */
+
+      padding: 0 28px;
+
+      border-radius: 16px;
+
+      background: #4a6d8c;           /* 🔹 color más cercano a la imagen */
+      color: #ffffff;
+
+      font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+      font-weight: 600;
+      text-align: left;              /* 🔹 texto a la izquierda */
+
+      box-shadow:
+        0 6px 16px rgba(3, 34, 61, 0.08);
+
+      opacity: 0;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        background 0.35s ease,
+        box-shadow 0.35s ease,
+        letter-spacing 0.35s ease;
+    }
+
+    /* =====================================
+       EFECTO HOVER
+    ====================================== */
+
+    .mercado:hover {
+      background: #3c6c95;
+      transform: translateY(-6px) scale(1.03);
+      box-shadow:
+        0 14px 30px rgba(3, 34, 61, 0.22);
+      letter-spacing: 0.5px;
+    }
+
+    .mercado:active {
+      transform: translateY(-2px) scale(0.99);
+      box-shadow:
+        0 6px 14px rgba(3, 34, 61, 0.18);
+    }
+
+    /* =====================================
+       ENTRADAS
+    ====================================== */
+
+    .mercado:nth-child(odd) {
+      transform: translateX(-80px);
+      animation:
+        entrarIzquierda
+        1s
+        cubic-bezier(0.22, 1, 0.36, 1)
+        forwards;
+    }
+
+    .mercado:nth-child(even) {
+      transform: translateX(80px);
+      animation:
+        entrarDerecha
+        1s
+        cubic-bezier(0.22, 1, 0.36, 1)
+        forwards;
+    }
+
+    .mercado:nth-child(1) { animation-delay: 0.1s; }
+    .mercado:nth-child(2) { animation-delay: 0.3s; }
+    .mercado:nth-child(3) { animation-delay: 0.5s; }
+    .mercado:nth-child(4) { animation-delay: 0.7s; }
+
+    @keyframes entrarIzquierda {
+      from { opacity: 0; transform: translateX(-80px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes entrarDerecha {
+      from { opacity: 0; transform: translateX(80px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* =====================================
+       RESPONSIVE
+    ====================================== */
+
+    @media (max-width: 700px) {
+      body { padding: 14px; }
+
+      .contenedor {
+        max-width: 100%;
+        gap: 12px;
+      }
+
+      .mercado {
+        min-height: 60px;
+        padding: 0 20px;
+        border-radius: 14px;
+        font-size: 0.95rem;
+      }
+
+      /* 🔹 En móvil desactivamos el hover para evitar saltos raros al tocar */
+      .mercado:hover {
+        transform: none;
+        box-shadow: 0 6px 16px rgba(3, 34, 61, 0.08);
+        letter-spacing: 0;
+      }
+    }
+
+    /* =====================================
+       ACCESIBILIDAD
+    ====================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+      .mercado {
+        animation: none !important;
+        opacity: 1;
+        transform: none !important;
+        transition: none !important;
+      }
+
+      .mercado:hover {
+        transform: none;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <main class="contenedor">
+
+    <div class="mercado">Leasing.</div>
+    <div class="mercado">Factoring.</div>
+    <div class="mercado">Fondos de capital privado.</div>
+    <div class="mercado">Otros (Asobancaria, 2012).</div>
+
+  </main>
+
+</body>
+</html>

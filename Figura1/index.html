@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mercado de Capitales</title>
+
+  <!-- Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =========================================
+       GENERAL
+    ========================================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+
+      background: #ffffff;
+
+      padding: 30px 20px;
+
+      overflow-x: hidden;
+    }
+
+
+    /* =========================================
+       DIAGRAMA
+    ========================================== */
+
+    .diagrama {
+      position: relative;
+
+      width: 100%;
+      max-width: 1400px;
+
+      height: 820px;
+
+      margin: 0 auto;
+    }
+
+
+    /* =========================================
+       BLOQUES
+    ========================================== */
+
+    .bloque {
+      position: absolute;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      color: #ffffff;
+
+      border-radius: 30px;
+
+      padding: 20px;
+
+      z-index: 2;
+
+      opacity: 0;
+
+      animation:
+        aparecer
+        0.9s
+        cubic-bezier(.22,1,.36,1)
+        forwards;
+    }
+
+
+    @keyframes aparecer {
+
+      from {
+        opacity: 0;
+        transform: scale(.85);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+    }
+
+
+    /* =========================================
+       MERCADO DE CAPITALES
+    ========================================== */
+
+    .mercado {
+      width: 340px;
+      height: 180px;
+
+      left: 0;
+      top: 310px;
+
+      background: #032B4D;
+
+      font-size: 1.9rem;
+
+      font-weight: 700;
+
+      line-height: 1.2;
+
+      animation-delay: .1s;
+    }
+
+
+    /* =========================================
+       INTERMEDIADO BANCARIO
+    ========================================== */
+
+    .intermediado {
+      width: 360px;
+      height: 180px;
+
+      left: 430px;
+      top: 170px;
+
+      background: #3F6F98;
+
+      font-size: 1.45rem;
+
+      font-weight: 400;
+
+      animation-delay: .45s;
+    }
+
+
+    /* =========================================
+       NO INTERMEDIADO
+    ========================================== */
+
+    .no-intermediado {
+      width: 360px;
+      height: 180px;
+
+      left: 430px;
+      top: 520px;
+
+      background: #3F6F98;
+
+      font-size: 1.4rem;
+
+      font-weight: 400;
+
+      animation-delay: .65s;
+    }
+
+
+    /* =========================================
+       BLOQUES DERECHA
+    ========================================== */
+
+    .derecha {
+      width: 255px;
+      height: 150px;
+
+      right: 0;
+
+      background: #49419B;
+
+      font-size: 1.12rem;
+
+      font-weight: 400;
+
+      line-height: 1.18;
+
+      animation-name: entrarDerecha;
+    }
+
+
+    @keyframes entrarDerecha {
+
+      from {
+        opacity: 0;
+        transform: translateX(130px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+    }
+
+
+    .derecha-1 {
+      top: 10px;
+      animation-delay: .9s;
+    }
+
+    .derecha-2 {
+      top: 180px;
+      animation-delay: 1.05s;
+    }
+
+    .derecha-3 {
+      top: 350px;
+      animation-delay: 1.2s;
+    }
+
+    .derecha-4 {
+      top: 520px;
+      animation-delay: 1.35s;
+    }
+
+    .mercado-valores {
+      top: 690px;
+
+      font-weight: 700;
+
+      animation-delay: 1.5s;
+    }
+
+
+    /* =========================================
+       SVG DE LÍNEAS
+    ========================================== */
+
+    .lineas {
+      position: absolute;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      z-index: 1;
+
+      overflow: visible;
+    }
+
+
+    .linea {
+      stroke: #032B4D;
+
+      stroke-width: 8;
+
+      fill: none;
+
+      stroke-linecap: square;
+
+      stroke-dasharray: 1000;
+
+      stroke-dashoffset: 1000;
+
+      animation:
+        dibujarLinea
+        1s
+        ease
+        forwards;
+    }
+
+
+    @keyframes dibujarLinea {
+
+      to {
+        stroke-dashoffset: 0;
+      }
+
+    }
+
+
+    .linea-1 {
+      animation-delay: .25s;
+    }
+
+    .linea-2 {
+      animation-delay: .35s;
+    }
+
+    .linea-3 {
+      animation-delay: .75s;
+    }
+
+    .linea-4 {
+      animation-delay: .9s;
+    }
+
+    .linea-5 {
+      animation-delay: 1.05s;
+    }
+
+    .linea-6 {
+      animation-delay: 1.2s;
+    }
+
+    .linea-7 {
+      animation-delay: 1.35s;
+    }
+
+
+    /* =========================================
+       RESPONSIVE
+    ========================================== */
+
+    @media (max-width: 1050px) {
+
+      .diagrama {
+        height: auto;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 20px;
+      }
+
+
+      .bloque {
+        position: relative;
+
+        top: auto;
+        left: auto;
+        right: auto;
+
+        width: 100%;
+
+        min-height: 110px;
+
+        height: auto;
+      }
+
+
+      .lineas {
+        display: none;
+      }
+
+    }
+
+
+    /* =========================================
+       ACCESIBILIDAD
+    ========================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .bloque,
+      .linea {
+        animation: none !important;
+
+        opacity: 1;
+
+        transform: none;
+
+        stroke-dashoffset: 0;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <main class="diagrama">
+
+
+    <!-- =====================================
+         LÍNEAS
+    ====================================== -->
+
+    <svg
+      class="lineas"
+      viewBox="0 0 1400 820"
+      preserveAspectRatio="none"
+    >
+
+
+      <!-- =================================
+           MERCADO DE CAPITALES
+           CENTRO DERECHO:
+           x = 340
+           y = 400
+      ================================== -->
+
+
+      <!-- hacia intermediado -->
+      <path
+        class="linea linea-1"
+        d="M340 400 L430 260"
+      />
+
+
+      <!-- hacia no intermediado -->
+      <path
+        class="linea linea-2"
+        d="M340 400 L430 610"
+      />
+
+
+
+      <!-- =================================
+           INTERMEDIADO BANCARIO
+
+           lado derecho:
+           x = 790
+
+           centro:
+           y = 260
+      ================================== -->
+
+
+      <!-- bloque superior -->
+      <path
+        class="linea linea-3"
+        d="M790 260 L1145 85"
+      />
+
+
+      <!-- segundo bloque -->
+      <path
+        class="linea linea-4"
+        d="M790 260 L1145 255"
+      />
+
+
+      <!-- tercer bloque -->
+      <path
+        class="linea linea-5"
+        d="M790 260 L1145 425"
+      />
+
+
+      <!-- cuarto bloque -->
+      <path
+        class="linea linea-6"
+        d="M790 260 L1145 595"
+      />
+
+
+
+      <!-- =================================
+           NO INTERMEDIADO
+
+           lado derecho:
+           x = 790
+
+           centro:
+           y = 610
+      ================================== -->
+
+
+      <!-- mercado de valores -->
+      <path
+        class="linea linea-7"
+        d="M790 610 L1145 765"
+      />
+
+
+    </svg>
+
+
+
+    <!-- =====================================
+         MERCADO DE CAPITALES
+    ====================================== -->
+
+    <section class="bloque mercado">
+
+      MERCADO DE
+      <br>
+      CAPITALES
+
+    </section>
+
+
+
+    <!-- =====================================
+         INTERMEDIADO BANCARIO
+    ====================================== -->
+
+    <section class="bloque intermediado">
+
+      INTERMEDIADO
+      <br>
+      BANCARIO
+
+    </section>
+
+
+
+    <!-- =====================================
+         NO INTERMEDIADO
+    ====================================== -->
+
+    <section class="bloque no-intermediado">
+
+      NO INTERMEDIADO
+      <br>
+      NO BANCARIO
+
+    </section>
+
+
+
+    <!-- =====================================
+         DERECHA
+    ====================================== -->
+
+    <section class="bloque derecha derecha-1">
+
+      Establecimientos
+      <br>
+      de Crédito
+
+    </section>
+
+
+    <section class="bloque derecha derecha-2">
+
+      Establecimientos
+      <br>
+      de Crédito
+
+    </section>
+
+
+    <section class="bloque derecha derecha-3">
+
+      Establecimientos
+      <br>
+      de Crédito
+
+    </section>
+
+
+    <section class="bloque derecha derecha-4">
+
+      Establecimientos
+      <br>
+      de Crédito
+
+    </section>
+
+
+
+    <!-- =====================================
+         MERCADO DE VALORES
+    ====================================== -->
+
+    <section class="bloque derecha mercado-valores">
+
+      Mercado de
+      <br>
+      Valores
+
+    </section>
+
+
+  </main>
+
+</body>
+</html>

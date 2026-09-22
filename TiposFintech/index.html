@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Servicios Fintech</title>
+
+  <!-- Poppins (fuente única) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =========================================
+       GENERAL
+    ========================================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+
+      /* 🔹 FUENTE ÚNICA Y PRINCIPAL */
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      padding: 20px;
+
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow-x: hidden;
+    }
+
+    .contenedor {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+
+    /* =========================================
+       GRID
+    ========================================== */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+
+    /* =========================================
+       FLIP CARD
+    ========================================== */
+
+    .flip-card {
+      width: 100%;
+      height: 150px;
+
+      perspective: 1200px;
+
+      cursor: pointer;
+
+      opacity: 0;
+      transform: translateY(20px);
+
+      animation:
+        entrada
+        0.8s
+        cubic-bezier(.22, 1, .36, 1)
+        forwards;
+    }
+
+
+    .flip-card:nth-child(1)  { animation-delay: .05s; }
+    .flip-card:nth-child(2)  { animation-delay: .12s; }
+    .flip-card:nth-child(3)  { animation-delay: .19s; }
+    .flip-card:nth-child(4)  { animation-delay: .26s; }
+    .flip-card:nth-child(5)  { animation-delay: .33s; }
+    .flip-card:nth-child(6)  { animation-delay: .40s; }
+    .flip-card:nth-child(7)  { animation-delay: .47s; }
+    .flip-card:nth-child(8)  { animation-delay: .54s; }
+    .flip-card:nth-child(9)  { animation-delay: .61s; }
+    .flip-card:nth-child(10) { animation-delay: .68s; }
+
+
+    @keyframes entrada {
+
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+
+    /* =========================================
+       CONTENEDOR INTERIOR
+    ========================================== */
+
+    .flip-card-inner {
+      position: relative;
+
+      width: 100%;
+      height: 100%;
+
+      transition:
+        transform
+        .7s
+        cubic-bezier(.22, 1, .36, 1);
+
+      transform-style: preserve-3d;
+    }
+
+
+    .flip-card.activa .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+
+    /* =========================================
+       CARAS
+    ========================================== */
+
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+
+      width: 100%;
+      height: 100%;
+
+      top: 0;
+      left: 0;
+
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+
+      border-radius: 16px;
+
+      display: flex;
+      align-items: center;
+
+      padding: 18px 22px;
+
+      box-shadow:
+        0 8px 22px
+        rgba(3, 34, 61, .10);
+    }
+
+
+    /* =========================================
+       FRENTE
+    ========================================== */
+
+    .flip-card-front {
+      background: #ffffff;
+
+      border: 2px solid #356389;
+
+      color: #03223D;
+
+      overflow: hidden;
+
+      justify-content: flex-start;
+    }
+
+
+    .flip-card-front::before {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      top: 0;
+
+      width: 10px;
+      height: 100%;
+
+      background: #356389;
+    }
+
+
+    .flip-card-front::after {
+      content: "";
+
+      position: absolute;
+
+      width: 130px;
+      height: 130px;
+
+      border-radius: 50%;
+
+      right: -65px;
+      top: -65px;
+
+      background:
+        rgba(53, 99, 137, .06);
+    }
+
+
+    .flip-card-front h2 {
+      position: relative;
+
+      z-index: 2;
+
+      width: 100%;
+
+      color: #03223D;
+
+      font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+
+      font-weight: 600;
+
+      line-height: 1.25;
+
+      text-align: left;
+
+      /* 🔹 SIN text-transform para respetar mayúsculas/minúsculas originales */
+    }
+
+
+    /* =========================================
+       RESPALDO
+    ========================================== */
+
+    .flip-card-back {
+      background: #356389;
+
+      color: #ffffff;
+
+      transform: rotateY(180deg);
+
+      justify-content: flex-start;
+    }
+
+
+    .flip-card-back p {
+      width: 100%;
+
+      font-size: clamp(0.72rem, 1.1vw, 0.85rem);
+
+      font-weight: 400;
+
+      line-height: 1.5;
+
+      color: #ffffff;
+
+      text-align: left;
+
+      /* 🔹 SIN text-transform para respetar mayúsculas/minúsculas originales */
+    }
+
+
+    /* =========================================
+       HOVER
+    ========================================== */
+
+    @media (hover: hover) {
+
+      .flip-card:hover .flip-card-front {
+        border-color: #03223D;
+
+        box-shadow:
+          0 14px 30px
+          rgba(3, 34, 61, .16);
+      }
+
+    }
+
+
+    /* =========================================
+       RESPONSIVE
+    ========================================== */
+
+    @media (max-width: 850px) {
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .flip-card {
+        height: 140px;
+      }
+
+    }
+
+
+    @media (max-width: 550px) {
+
+      body {
+        padding: 14px;
+      }
+
+      .flip-card {
+        height: 150px;
+      }
+
+      .flip-card-front,
+      .flip-card-back {
+        padding: 16px 18px;
+      }
+
+      .flip-card-front h2 {
+        font-size: 1rem;
+      }
+
+      .flip-card-back p {
+        font-size: 0.8rem;
+      }
+
+    }
+
+
+    /* =========================================
+       ACCESIBILIDAD
+    ========================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .flip-card {
+        animation: none;
+
+        opacity: 1;
+
+        transform: none;
+      }
+
+      .flip-card-inner {
+        transition: none;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <main class="contenedor">
+
+    <section class="grid">
+
+
+      <!-- 1 -->
+      <article class="flip-card" tabindex="0" role="button" aria-label="Pagos digitales">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Pagos digitales</h2>
+          </div>
+          <div class="flip-card-back">
+            <p>Aquí encontramos las pasarelas de pago, billeteras digitales, redes de corresponsalía, giros y transferencias (Pymas, s. f.).</p>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- 2 -->
+      <article class="flip-card" tabindex="0" role="button" aria-label="Regtech">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Regtech</h2>
+          </div>
+          <div class="flip-card-back">
+            <p>Apoyan a las entidades financieras, tienen soluciones de machine learning, IA, verificación de fraude, identidades digitales y ciberseguridad.</p>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- 3 -->
+      <article class="flip-card" tabindex="0" role="button" aria-label="Crédito digital">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Crédito digital</h2>
+          </div>
+          <div class="flip-card-back">
+            <p>Créditos a través de internet, aplicaciones móviles o web.</p>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- 4 -->
+      <article class="flip-card" tabindex="0" role="button" aria-label="Finanzas personales y gestión patrimonial">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Finanzas personales y gestión patrimonial</h2>
+          </div>
+          <div class="flip-card-back">
+            <p>Aplicaciones que ayudan a administrar costos, gastos y presupuestos.</p>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- 5 -->
+      <article class="flip-card" tabindex="0" role="button" aria-label="Crowdfunding">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Crowdfunding</h2>
+          </div>
+          <div class="flip-card-back">
+            <p>Financiamiento colaborativo: es financiación a través de otros. Se debe revisar antes del uso la normatividad vigente porque en Colombia existen restricciones.</p>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- 6 -->
+      <article class="flip-card" tabindex="0" role="button" aria-label="Insurtech">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Insurtech</h2>
+          </div>
+          <div class="flip-card-back">
+            <p>Dedicadas a los seguros.</p>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- 7 -->
+      <article class="flip-card" tabindex="0" role="button" aria-label="Neobancos">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Neobancos</h2>
+          </div>
+          <div class="flip-card-back">
+            <p>Bancos que funcionan a través del celular.</p>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- 8 -->
+      <article class="flip-card" tabindex="0" role="button" aria-label="Criptoactivos">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Criptoactivos</h2>
+          </div>
+          <div class="flip-card-back">
+            <p>Activos digitales criptográficamente seguros y que usan la tecnología blockchain: criptomonedas, valores o mercancías.</p>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- 9 -->
+      <article class="flip-card" tabindex="0" role="button" aria-label="Soluciones financieras para empresas">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Soluciones financieras para empresas</h2>
+          </div>
+          <div class="flip-card-back">
+            <p>Proveen soluciones tecnológicas como factura electrónica, contabilidad en la nube, impuestos, nómina, factoring, etc.</p>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- 10 -->
+      <article class="flip-card" tabindex="0" role="button" aria-label="Trading y mercados">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Trading y mercados</h2>
+          </div>
+          <div class="flip-card-back">
+            <p>Plataformas de negociación o inversión bursátil (Pymas, s. f.).</p>
+          </div>
+        </div>
+      </article>
+
+
+    </section>
+
+  </main>
+
+
+
+  <script>
+
+    const tarjetas = document.querySelectorAll(".flip-card");
+
+    tarjetas.forEach((tarjeta) => {
+
+      /* CLIC */
+      tarjeta.addEventListener("click", () => {
+        tarjeta.classList.toggle("activa");
+      });
+
+      /* TECLADO */
+      tarjeta.addEventListener("keydown", (evento) => {
+        if (evento.key === "Enter" || evento.key === " ") {
+          evento.preventDefault();
+          tarjeta.classList.toggle("activa");
+        }
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>

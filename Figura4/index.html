@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Tipos de Negocios Fiduciarios</title>
+
+  <!-- Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =========================================
+       GENERAL
+    ========================================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #ffffff;
+      padding: 20px;
+
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow-x: hidden;
+    }
+
+    .diagrama {
+      position: relative;
+
+      width: 100%;
+      max-width: 950px;    /* 🔹 antes 1400px */
+
+      height: 720px;       /* 🔹 antes 1080px */
+
+      margin: 0 auto;
+    }
+
+
+    /* =========================================
+       BLOQUES
+    ========================================== */
+
+    .bloque {
+      position: absolute;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      color: #ffffff;
+
+      padding: 10px 14px;
+
+      z-index: 2;
+
+      opacity: 0;
+
+      /* 🔹 ANIMACIÓN MÁS LENTA (antes .85s) */
+      animation:
+        aparecer
+        1.8s
+        cubic-bezier(.22, 1, .36, 1)
+        forwards;
+    }
+
+
+    @keyframes aparecer {
+
+      from {
+        opacity: 0;
+        transform: scale(.86);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+    }
+
+
+    /* =========================================
+       BLOQUE PRINCIPAL
+    ========================================== */
+
+    .principal {
+      left: 5px;
+      top: 275px;          /* 🔹 antes 410px */
+
+      width: 155px;        /* 🔹 antes 220px */
+      height: 75px;        /* 🔹 antes 110px */
+
+      border-radius: 16px;
+
+      background: #032B4D;
+
+      font-size: .72rem;   /* 🔹 antes 1rem */
+      font-weight: 700;
+      line-height: 1.2;
+
+      animation-delay: .2s;
+    }
+
+
+    /* =========================================
+       TIPOS DE FIDUCIA
+    ========================================== */
+
+    .tipo {
+      left: 325px;         /* 🔹 antes 480px */
+
+      width: 155px;        /* 🔹 antes 225px */
+      height: 75px;        /* 🔹 antes 110px */
+
+      border-radius: 16px;
+
+      background: #3F6F98;
+
+      font-size: .68rem;   /* 🔹 antes .95rem */
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+
+    .tipo-1 { top: 15px;  animation-delay: 1s; }
+    .tipo-2 { top: 148px; animation-delay: 1.4s; }
+    .tipo-3 { top: 348px; animation-delay: 1.8s; }
+    .tipo-4 { top: 440px; animation-delay: 2.2s; }
+    .tipo-5 { top: 533px; animation-delay: 2.6s; }
+    .tipo-6 { top: 626px; animation-delay: 3s; }
+
+
+    /* =========================================
+       FUNCIONES DERECHA
+    ========================================== */
+
+    .detalle {
+      left: 575px;         /* 🔹 antes 850px */
+
+      width: 265px;        /* 🔹 antes 380px */
+      min-height: 36px;    /* 🔹 antes 52px */
+
+      border-radius: 10px;
+
+      background: #49419B;
+
+      font-size: .72rem;   /* 🔹 antes 1.05rem */
+      font-weight: 400;
+      line-height: 1.15;
+
+      transform: translateX(70px);
+
+      animation-name: entrarDerecha;
+    }
+
+
+    @keyframes entrarDerecha {
+
+      from {
+        opacity: 0;
+        transform: translateX(70px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+    }
+
+
+    /* FIDUCIA DE INVERSIÓN */
+    .d1 { top: 5px;   animation-delay: 1.7s; }
+    .d2 { top: 48px;  animation-delay: 2s; }
+
+    /* FIDUCIA DE ADMINISTRACIÓN */
+    .d3 { top: 105px; animation-delay: 2.3s; }
+    .d4 { top: 148px; animation-delay: 2.6s; }
+    .d5 { top: 191px; animation-delay: 2.9s; }
+    .d6 { top: 234px; animation-delay: 3.2s; }
+
+    /* FIDUCIA INMOBILIARIA */
+    .d7 { top: 335px; animation-delay: 3.5s; }
+    .d8 { top: 378px; animation-delay: 3.8s; }
+    .d9 { top: 421px; animation-delay: 4.1s; }
+
+
+    /* =========================================
+       LÍNEAS SVG
+    ========================================== */
+
+    .lineas {
+      position: absolute;
+
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      z-index: 1;
+
+      overflow: visible;
+    }
+
+
+    .linea {
+      stroke: #032B4D;
+
+      stroke-width: 4;    /* 🔹 antes 5 */
+
+      fill: none;
+
+      stroke-linecap: round;
+
+      stroke-dasharray: 1500;
+      stroke-dashoffset: 1500;
+
+      /* 🔹 MÁS LENTO (antes .9s) */
+      animation:
+        dibujar
+        2.2s ease
+        forwards;
+    }
+
+
+    @keyframes dibujar {
+
+      to {
+        stroke-dashoffset: 0;
+      }
+
+    }
+
+
+    /* Principal -> tipos */
+    .l1 { animation-delay: .5s; }
+    .l2 { animation-delay: .8s; }
+    .l3 { animation-delay: 1.1s; }
+    .l4 { animation-delay: 1.4s; }
+    .l5 { animation-delay: 1.7s; }
+    .l6 { animation-delay: 2s; }
+
+    /* Tipos -> detalles */
+    .ld1 { animation-delay: 2.3s; }
+    .ld2 { animation-delay: 2.6s; }
+
+    .ld3 { animation-delay: 2.9s; }
+    .ld4 { animation-delay: 3.2s; }
+    .ld5 { animation-delay: 3.5s; }
+    .ld6 { animation-delay: 3.8s; }
+
+    .ld7 { animation-delay: 4.1s; }
+    .ld8 { animation-delay: 4.4s; }
+    .ld9 { animation-delay: 4.7s; }
+
+
+    /* =========================================
+       RESPONSIVE
+    ========================================== */
+
+    @media (max-width: 1000px) {
+
+      .diagrama {
+        height: auto;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 12px;
+      }
+
+      .bloque {
+        position: relative;
+
+        top: auto;
+        left: auto;
+        right: auto;
+
+        width: 100%;
+        height: auto;
+
+        min-height: 65px;
+
+        font-size: .78rem;
+      }
+
+      .principal { order: 1; }
+
+      .tipo-1 { order: 2; }
+      .d1 { order: 3; }
+      .d2 { order: 4; }
+
+      .tipo-2 { order: 5; }
+      .d3 { order: 6; }
+      .d4 { order: 7; }
+      .d5 { order: 8; }
+      .d6 { order: 9; }
+
+      .tipo-3 { order: 10; }
+      .d7 { order: 11; }
+      .d8 { order: 12; }
+      .d9 { order: 13; }
+
+      .tipo-4 { order: 14; }
+      .tipo-5 { order: 15; }
+      .tipo-6 { order: 16; }
+
+      .lineas {
+        display: none;
+      }
+
+    }
+
+
+    /* =========================================
+       ACCESIBILIDAD
+    ========================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .bloque,
+      .linea {
+        animation: none !important;
+
+        opacity: 1;
+
+        transform: none;
+
+        stroke-dashoffset: 0;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <main class="diagrama">
+
+
+    <!-- =====================================
+         LÍNEAS
+    ====================================== -->
+
+    <svg
+      class="lineas"
+      viewBox="0 0 950 720"
+      preserveAspectRatio="none"
+    >
+
+      <!-- PRINCIPAL → TIPOS -->
+      <path class="linea l1" d="M160 312 L325 52" />
+      <path class="linea l2" d="M160 312 L325 185" />
+      <path class="linea l3" d="M160 312 L325 385" />
+      <path class="linea l4" d="M160 312 L325 477" />
+      <path class="linea l5" d="M160 312 L325 570" />
+      <path class="linea l6" d="M160 312 L325 663" />
+
+      <!-- FIDUCIA DE INVERSIÓN -->
+      <path class="linea ld1" d="M480 52  L575 23" />
+      <path class="linea ld2" d="M480 52  L575 66" />
+
+      <!-- FIDUCIA DE ADMINISTRACIÓN -->
+      <path class="linea ld3" d="M480 185 L575 123" />
+      <path class="linea ld4" d="M480 185 L575 166" />
+      <path class="linea ld5" d="M480 185 L575 209" />
+      <path class="linea ld6" d="M480 185 L575 252" />
+
+      <!-- FIDUCIA INMOBILIARIA -->
+      <path class="linea ld7" d="M480 385 L575 353" />
+      <path class="linea ld8" d="M480 385 L575 396" />
+      <path class="linea ld9" d="M480 385 L575 439" />
+
+    </svg>
+
+
+
+    <!-- =====================================
+         PRINCIPAL
+    ====================================== -->
+
+    <section class="bloque principal">
+      TIPOS DE NEGOCIOS
+      <br>
+      FIDUCIARIOS
+    </section>
+
+
+
+    <!-- =====================================
+         FIDUCIA DE INVERSIÓN
+    ====================================== -->
+
+    <section class="bloque tipo tipo-1">
+      Fiducia de Inversión
+    </section>
+
+    <section class="bloque detalle d1">
+      Con destinación específica
+    </section>
+
+    <section class="bloque detalle d2">
+      Admin de inversiones
+      <br>
+      de fondos mutuos
+    </section>
+
+
+
+    <!-- =====================================
+         FIDUCIA DE ADMINISTRACIÓN
+    ====================================== -->
+
+    <section class="bloque tipo tipo-2">
+      Fiducia de
+      <br>
+      Administración
+    </section>
+
+    <section class="bloque detalle d3">
+      Administración y pagos
+    </section>
+
+    <section class="bloque detalle d4">
+      Administración de procesos
+      <br>
+      de titularización
+    </section>
+
+    <section class="bloque detalle d5">
+      Administración de cartera
+    </section>
+
+    <section class="bloque detalle d6">
+      Administración de procesos
+      <br>
+      concursales
+    </section>
+
+
+
+    <!-- =====================================
+         FIDUCIA INMOBILIARIA
+    ====================================== -->
+
+    <section class="bloque tipo tipo-3">
+      Fiducia
+      <br>
+      Inmobiliaria
+    </section>
+
+    <section class="bloque detalle d7">
+      De preventas
+    </section>
+
+    <section class="bloque detalle d8">
+      De tesorería
+    </section>
+
+    <section class="bloque detalle d9">
+      Administración y pagos
+    </section>
+
+
+
+    <!-- =====================================
+         FIDUCIA EN GARANTÍA
+    ====================================== -->
+
+    <section class="bloque tipo tipo-4">
+      Fiducia en Garantía
+    </section>
+
+
+
+    <!-- =====================================
+         PARTICIPACIONES FIDUCIARIAS
+    ====================================== -->
+
+    <section class="bloque tipo tipo-5">
+      Participaciones
+      <br>
+      Fiduciarias
+    </section>
+
+
+
+    <!-- =====================================
+         SEGURIDAD SOCIAL
+    ====================================== -->
+
+    <section class="bloque tipo tipo-6">
+      Fiducia Recursos del
+      <br>
+      Sistema de Seguridad
+      <br>
+      Social
+    </section>
+
+
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mercado de Divisas</title>
+
+  <!-- Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =========================================
+       GENERAL
+    ========================================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #ffffff;
+      padding: 25px;
+      overflow-x: hidden;
+
+      /* 🔹 CENTRADO VERTICAL Y HORIZONTAL */
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .diagrama {
+      position: relative;
+
+      width: 100%;
+      max-width: 720px;   /* 🔹 antes 1100px */
+
+      height: 540px;      /* 🔹 antes 820px */
+
+      margin: 0 auto;
+    }
+
+
+    /* =========================================
+       BLOQUE IZQUIERDO
+    ========================================== */
+
+    .mercado {
+      position: absolute;
+
+      left: 0;
+      top: 0;
+
+      width: 130px;       /* 🔹 antes 200px */
+      height: 100%;
+
+      background: #032B4D;
+
+      border-radius:
+        18px
+        0
+        0
+        18px;
+
+      color: #ffffff;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      opacity: 0;
+
+      transform: translateX(-80px);
+
+      animation:
+        entrarIzquierda
+        1s
+        cubic-bezier(.22,1,.36,1)
+        .1s
+        forwards;
+    }
+
+    .mercado span {
+      writing-mode: vertical-rl;
+
+      transform: rotate(180deg);
+
+      font-size: 1.5rem;   /* 🔹 antes 2.3rem */
+
+      font-weight: 400;
+
+      letter-spacing: 1px;
+    }
+
+
+    @keyframes entrarIzquierda {
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+    }
+
+
+    /* =========================================
+       BLOQUES DERECHA
+    ========================================== */
+
+    .bloque {
+      position: absolute;
+
+      left: 280px;         /* 🔹 antes 430px */
+
+      width: 390px;        /* 🔹 antes 590px */
+      height: 115px;       /* 🔹 antes 175px */
+
+      background: #3F6F98;
+
+      color: #ffffff;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      padding: 15px;
+
+      font-size: clamp(1rem, 2vw, 1.5rem);   /* 🔹 más pequeño */
+
+      font-weight: 300;
+
+      opacity: 0;
+
+      transform: translateX(120px);
+
+      animation:
+        entrarDerecha
+        1s
+        cubic-bezier(.22,1,.36,1)
+        forwards;
+    }
+
+
+    @keyframes entrarDerecha {
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+    }
+
+
+    .b1 {
+      top: 0;
+      animation-delay: .7s;
+    }
+
+    .b2 {
+      top: 138px;          /* 🔹 antes 210px */
+      animation-delay: .9s;
+    }
+
+    .b3 {
+      top: 277px;          /* 🔹 antes 420px */
+      animation-delay: 1.1s;
+
+      font-size: clamp(0.9rem, 1.8vw, 1.35rem);
+      line-height: 1.2;
+    }
+
+    .b4 {
+      top: 415px;          /* 🔹 antes 630px */
+      animation-delay: 1.3s;
+
+      border-radius:
+        0
+        0
+        18px
+        0;
+    }
+
+
+    /* =========================================
+       LÍNEAS
+    ========================================== */
+
+    .lineas {
+      position: absolute;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      z-index: 0;
+
+      overflow: visible;
+    }
+
+    .linea {
+      stroke: #000000;
+
+      stroke-width: 5;    /* 🔹 antes 7 */
+
+      fill: none;
+
+      stroke-linecap: round;
+
+      stroke-dasharray: 1000;
+
+      stroke-dashoffset: 1000;
+
+      animation:
+        dibujar
+        .9s ease
+        forwards;
+    }
+
+
+    @keyframes dibujar {
+
+      to {
+        stroke-dashoffset: 0;
+      }
+
+    }
+
+
+    .linea-central {
+      animation-delay: .35s;
+    }
+
+    .l1 {
+      animation-delay: .5s;
+    }
+
+    .l2 {
+      animation-delay: .65s;
+    }
+
+    .l3 {
+      animation-delay: .8s;
+    }
+
+    .l4 {
+      animation-delay: .95s;
+    }
+
+
+    /* =========================================
+       RESPONSIVE
+    ========================================== */
+
+    @media (max-width: 850px) {
+
+      body {
+        padding: 14px;
+      }
+
+      .diagrama {
+        height: auto;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 14px;
+      }
+
+      .mercado {
+        position: relative;
+
+        width: 100%;
+        height: 85px;
+
+        border-radius: 16px;
+      }
+
+      .mercado span {
+        writing-mode: horizontal-tb;
+
+        transform: none;
+
+        font-size: 1.2rem;
+      }
+
+      .bloque {
+        position: relative;
+
+        top: auto;
+        left: auto;
+
+        width: 100%;
+        height: auto;
+
+        min-height: 85px;
+
+        border-radius: 14px;
+
+        font-size: 1rem;
+      }
+
+      .lineas {
+        display: none;
+      }
+
+    }
+
+
+    /* =========================================
+       ACCESIBILIDAD
+    ========================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .mercado,
+      .bloque,
+      .linea {
+        animation: none !important;
+
+        opacity: 1;
+
+        transform: none;
+
+        stroke-dashoffset: 0;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <main class="diagrama">
+
+
+    <!-- =====================================
+         LÍNEAS
+    ====================================== -->
+
+    <svg
+      class="lineas"
+      viewBox="0 0 720 540"
+      preserveAspectRatio="none"
+    >
+
+      <!-- conexión desde mercado -->
+      <path
+        class="linea linea-central"
+        d="M130 270 L205 270"
+      />
+
+
+      <!-- línea vertical central -->
+      <path
+        class="linea linea-central"
+        d="M205 57 L205 472"
+      />
+
+
+      <!-- Bancos -->
+      <path
+        class="linea l1"
+        d="M205 57 L280 57"
+      />
+
+
+      <!-- Multinacionales -->
+      <path
+        class="linea l2"
+        d="M205 195 L280 195"
+      />
+
+
+      <!-- Otras instituciones -->
+      <path
+        class="linea l3"
+        d="M205 334 L280 334"
+      />
+
+
+      <!-- Bancos centrales -->
+      <path
+        class="linea l4"
+        d="M205 472 L280 472"
+      />
+
+    </svg>
+
+
+
+    <!-- =====================================
+         MERCADO DE DIVISAS
+    ====================================== -->
+
+    <section class="mercado">
+
+      <span>
+        MERCADO DE DIVISAS
+      </span>
+
+    </section>
+
+
+
+    <!-- =====================================
+         BANCOS
+    ====================================== -->
+
+    <section class="bloque b1">
+
+      Bancos
+
+    </section>
+
+
+
+    <!-- =====================================
+         MULTINACIONALES
+    ====================================== -->
+
+    <section class="bloque b2">
+
+      Multinacionales
+
+    </section>
+
+
+
+    <!-- =====================================
+         OTRAS INSTITUCIONES
+    ====================================== -->
+
+    <section class="bloque b3">
+
+      Otras Instituciones
+      <br>
+      Financieras no
+      <br>
+      Bancarias
+
+    </section>
+
+
+
+    <!-- =====================================
+         BANCOS CENTRALES
+    ====================================== -->
+
+    <section class="bloque b4">
+
+      Bancos Centrales
+
+    </section>
+
+
+  </main>
+
+</body>
+</html>

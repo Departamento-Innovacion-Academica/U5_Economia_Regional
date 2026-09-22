@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Línea de tiempo normativa</title>
+
+  <!-- POPPINS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =========================================
+       GENERAL
+    ========================================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+
+      /* 🔹 FUENTE ÚNICA */
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: #03223D;
+
+      padding: 24px 18px;
+
+      overflow-x: hidden;
+
+      /* 🔹 CENTRADO VERTICAL */
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    /* =========================================
+       CONTENEDOR
+    ========================================== */
+
+    .timeline-wrapper {
+      width: 100%;
+      max-width: 920px;   /* 🔹 antes 1180px */
+      margin: 0 auto;
+    }
+
+
+    /* =========================================
+       ENCABEZADO (SIN TÍTULO, SOLO INSTRUCCIÓN)
+    ========================================== */
+
+    .header {
+      display: flex;
+      justify-content: flex-end;   /* 🔹 instrucción a la derecha */
+
+      margin-bottom: 18px;         /* 🔹 antes 30px */
+    }
+
+    .header p {
+      color: #56628D;
+
+      font-size: .82rem;           /* 🔹 antes .95rem */
+      line-height: 1.45;
+
+      text-align: right;           /* 🔹 alineado a la derecha */
+
+      max-width: 380px;
+    }
+
+
+    /* =========================================
+       FILTROS
+    ========================================== */
+
+    .filtros {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 8px;                    /* 🔹 antes 10px */
+
+      margin-bottom: 30px;         /* 🔹 antes 45px */
+    }
+
+    .filtro {
+      min-height: 36px;            /* 🔹 antes 44px */
+
+      border: 2px solid #356389;
+
+      border-radius: 26px;
+
+      background: #ffffff;
+
+      color: #03223D;
+
+      padding: 6px 16px;           /* 🔹 antes 8px 20px */
+
+      font-family: "Poppins", sans-serif;
+
+      font-size: .78rem;           /* 🔹 antes .9rem */
+
+      font-weight: 600;
+
+      cursor: pointer;
+
+      transition:
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease;
+    }
+
+    .filtro:hover {
+      transform: translateY(-2px);
+    }
+
+    .filtro.activo {
+      background: #03223D;
+      border-color: #03223D;
+      color: #ffffff;
+    }
+
+
+    /* =========================================
+       TIMELINE
+    ========================================== */
+
+    .timeline {
+      position: relative;
+
+      width: 100%;
+
+      padding: 8px 0 26px;   /* 🔹 antes 10px 0 40px */
+    }
+
+
+    /* Línea vertical */
+
+    .timeline::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      bottom: 0;
+
+      left: 50%;
+
+      width: 4px;            /* 🔹 antes 5px */
+
+      background: #356389;
+
+      transform: translateX(-50%);
+
+      border-radius: 10px;
+    }
+
+
+    /* =========================================
+       ITEM
+    ========================================== */
+
+    .timeline-item {
+      position: relative;
+
+      width: 50%;
+
+      padding-bottom: 24px;  /* 🔹 antes 35px */
+
+      opacity: 0;
+
+      transition:
+        opacity .4s ease,
+        transform .4s ease;
+    }
+
+
+    /* IZQUIERDA */
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+
+      padding-right: 42px;   /* 🔹 antes 58px */
+
+      transform: translateX(-70px);
+    }
+
+
+    /* DERECHA */
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+
+      padding-left: 42px;    /* 🔹 antes 58px */
+
+      transform: translateX(70px);
+    }
+
+
+    /* Animación */
+
+    .timeline-item.mostrar {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+
+    /* =========================================
+       PUNTO CENTRAL
+    ========================================== */
+
+    .timeline-item::before {
+      content: "";
+
+      position: absolute;
+
+      top: 20px;              /* 🔹 antes 26px */
+
+      width: 16px;            /* 🔹 antes 22px */
+      height: 16px;
+
+      background: #ffffff;
+
+      border: 5px solid #03223D;   /* 🔹 antes 6px */
+
+      border-radius: 50%;
+
+      z-index: 5;
+    }
+
+
+    .timeline-item:nth-child(odd)::before {
+      right: -8px;            /* 🔹 antes -11px */
+    }
+
+    .timeline-item:nth-child(even)::before {
+      left: -8px;
+    }
+
+
+    /* =========================================
+       CONECTOR HORIZONTAL
+    ========================================== */
+
+    .timeline-item::after {
+      content: "";
+
+      position: absolute;
+
+      top: 28px;              /* 🔹 antes 36px */
+
+      width: 34px;            /* 🔹 antes 48px */
+      height: 3px;
+
+      background: #356389;
+    }
+
+    .timeline-item:nth-child(odd)::after {
+      right: 0;
+    }
+
+    .timeline-item:nth-child(even)::after {
+      left: 0;
+    }
+
+
+    /* =========================================
+       TARJETA
+    ========================================== */
+
+    .card {
+      position: relative;
+
+      width: 100%;
+
+      background: #ffffff;
+
+      border: 2px solid #356389;
+
+      border-radius: 14px;    /* 🔹 antes 18px */
+
+      padding: 16px 16px 16px 18px;   /* 🔹 antes 22px 22px 22px 25px */
+
+      box-shadow:
+        0 6px 18px
+        rgba(3, 34, 61, .08);
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+
+      border-color: #03223D;
+
+      box-shadow:
+        0 12px 26px
+        rgba(3, 34, 61, .13);
+    }
+
+
+    /* Barra lateral */
+
+    .card::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+
+      width: 6px;             /* 🔹 antes 8px */
+      height: 100%;
+
+      background: #356389;
+
+      border-radius:
+        12px
+        0
+        0
+        12px;
+    }
+
+
+    /* =========================================
+       CABECERA DE TARJETA
+    ========================================== */
+
+    .card-header {
+      display: flex;
+
+      align-items: center;
+
+      flex-wrap: wrap;
+
+      gap: 8px;               /* 🔹 antes 10px */
+
+      margin-bottom: 8px;     /* 🔹 antes 12px */
+    }
+
+
+    /* Año */
+
+    .year {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      min-width: 54px;        /* 🔹 antes 66px */
+      height: 28px;           /* 🔹 antes 36px */
+
+      border-radius: 8px;
+
+      background: #03223D;
+
+      color: #ffffff;
+
+      padding: 0 8px;
+
+      font-size: .78rem;      /* 🔹 antes .9rem */
+
+      font-weight: 700;
+    }
+
+
+    /* Tipo */
+
+    .type {
+      display: inline-flex;
+
+      align-items: center;
+
+      min-height: 26px;       /* 🔹 antes 32px */
+
+      border-radius: 8px;
+
+      background: #EEF3F7;
+
+      color: #356389;
+
+      padding: 4px 9px;       /* 🔹 antes 5px 10px */
+
+      font-size: .68rem;      /* 🔹 antes .78rem */
+
+      font-weight: 600;
+    }
+
+
+    /* Texto */
+
+    .card p {
+      color: #242424;
+
+      font-size: .82rem;      /* 🔹 antes .95rem */
+
+      font-weight: 400;
+
+      line-height: 1.5;
+    }
+
+
+    .card strong {
+      color: #03223D;
+
+      font-weight: 600;
+    }
+
+
+    /* =========================================
+       OCULTAR
+    ========================================== */
+
+    .timeline-item.oculto {
+      display: none;
+    }
+
+
+    /* =========================================
+       RESPONSIVE
+    ========================================== */
+
+    @media (max-width: 780px) {
+
+      .header {
+        justify-content: flex-start;   /* 🔹 en móvil se reinicia */
+      }
+
+      .header p {
+        text-align: left;
+        max-width: 100%;
+      }
+
+      .timeline::before {
+        left: 14px;
+      }
+
+
+      .timeline-item,
+      .timeline-item:nth-child(odd),
+      .timeline-item:nth-child(even) {
+        width: 100%;
+
+        left: 0;
+
+        padding-left: 46px;
+        padding-right: 0;
+
+        transform: translateX(50px);
+      }
+
+
+      .timeline-item.mostrar {
+        transform: translateX(0);
+      }
+
+
+      .timeline-item:nth-child(odd)::before,
+      .timeline-item:nth-child(even)::before {
+        left: 3px;
+        right: auto;
+      }
+
+
+      .timeline-item:nth-child(odd)::after,
+      .timeline-item:nth-child(even)::after {
+        left: 14px;
+        right: auto;
+
+        width: 32px;
+      }
+
+    }
+
+
+    @media (max-width: 500px) {
+
+      body {
+        padding: 16px 12px;
+      }
+
+      .timeline-item,
+      .timeline-item:nth-child(odd),
+      .timeline-item:nth-child(even) {
+        padding-left: 40px;
+      }
+
+      .card {
+        padding:
+          14px
+          12px
+          14px
+          16px;
+      }
+
+      .card p {
+        font-size: .78rem;
+      }
+
+    }
+
+
+    /* =========================================
+       ACCESIBILIDAD
+    ========================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .timeline-item {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+
+      .card {
+        transition: none;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <main class="timeline-wrapper">
+
+
+    <!-- =====================================
+         INSTRUCCIÓN (SIN TÍTULO, A LA DERECHA)
+    ====================================== -->
+
+    <header class="header">
+
+      <p>
+        Seleccione una categoría para explorar las principales
+        normas relacionadas.
+      </p>
+
+    </header>
+
+
+
+    <!-- =====================================
+         FILTROS
+    ====================================== -->
+
+    <nav
+      class="filtros"
+      aria-label="Filtros de normativa"
+    >
+
+      <button
+        type="button"
+        class="filtro activo"
+        data-filtro="todos"
+      >
+        Todas
+      </button>
+
+      <button
+        type="button"
+        class="filtro"
+        data-filtro="ley"
+      >
+        Leyes
+      </button>
+
+      <button
+        type="button"
+        class="filtro"
+        data-filtro="decreto"
+      >
+        Decretos
+      </button>
+
+      <button
+        type="button"
+        class="filtro"
+        data-filtro="circular"
+      >
+        Circulares
+      </button>
+
+      <button
+        type="button"
+        class="filtro"
+        data-filtro="otros"
+      >
+        Otros
+      </button>
+
+    </nav>
+
+
+
+    <!-- =====================================
+         LÍNEA DE TIEMPO
+    ====================================== -->
+
+    <section class="timeline">
+
+
+      <!-- 1999 -->
+      <article class="timeline-item" data-tipo="ley">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">1999</span>
+            <span class="type">Ley</span>
+          </div>
+          <p>
+            <strong>Ley 527 de 1999</strong>
+            (Ley de comercio electrónico)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2008 -->
+      <article class="timeline-item" data-tipo="ley">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2008</span>
+            <span class="type">Ley</span>
+          </div>
+          <p>
+            <strong>Ley 1266 de 2008</strong>
+            (Ley de hábeas data financiero y manejo de información
+            en bases de datos personales)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2009 -->
+      <article class="timeline-item" data-tipo="ley">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2009</span>
+            <span class="type">Ley</span>
+          </div>
+          <p>
+            <strong>Ley 1328 de 2009</strong>
+            (Ley de Protección al consumidor financiero)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2009 -->
+      <article class="timeline-item" data-tipo="ley">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2009</span>
+            <span class="type">Ley</span>
+          </div>
+          <p>
+            <strong>Ley 1273 de 2009</strong>
+            (La Ley de delitos Informáticos)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2010 -->
+      <article class="timeline-item" data-tipo="decreto">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2010</span>
+            <span class="type">Decreto</span>
+          </div>
+          <p>
+            <strong>Decreto 2555 de 2010</strong>
+            (Régimen general del sector financiero, asegurador y
+            del mercado de valores)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2011 -->
+      <article class="timeline-item" data-tipo="ley">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2011</span>
+            <span class="type">Ley</span>
+          </div>
+          <p>
+            <strong>Ley 1480 del 2011</strong>
+            (Estatuto del Consumidor)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2012 -->
+      <article class="timeline-item" data-tipo="ley">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2012</span>
+            <span class="type">Ley</span>
+          </div>
+          <p>
+            <strong>Ley 1581 de 2012</strong>
+            (Ley de Protección de datos personales)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2013 -->
+      <article class="timeline-item" data-tipo="decreto">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2013</span>
+            <span class="type">Decreto</span>
+          </div>
+          <p>
+            <strong>Decreto 1377 de 2013</strong>
+            (Protección de datos personales)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2014 -->
+      <article class="timeline-item" data-tipo="ley">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2014</span>
+            <span class="type">Ley</span>
+          </div>
+          <p>
+            <strong>Ley 1735 de 2014</strong>
+            (Ley de Inclusión Financiera)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2014 -->
+      <article class="timeline-item" data-tipo="decreto">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2014</span>
+            <span class="type">Decreto</span>
+          </div>
+          <p>
+            <strong>Decreto 1368 de 2014</strong>
+            (Crédito no vigilado)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2014 -->
+      <article class="timeline-item" data-tipo="decreto">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2014</span>
+            <span class="type">Decreto</span>
+          </div>
+          <p>
+            <strong>Decreto 2654 de 2014</strong>
+            (Crédito de Bajo Monto)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2015 -->
+      <article class="timeline-item" data-tipo="decreto">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2015</span>
+            <span class="type">Decreto</span>
+          </div>
+          <p>
+            <strong>Decreto 1702 de 2015</strong>
+            (Crédito no vigilado)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2015 -->
+      <article class="timeline-item" data-tipo="decreto">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2015</span>
+            <span class="type">Decreto</span>
+          </div>
+          <p>
+            <strong>Decreto 1074 de 2015</strong>
+            (Crédito no vigilado)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2018 -->
+      <article class="timeline-item" data-tipo="decreto">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2018</span>
+            <span class="type">Decreto</span>
+          </div>
+          <p>
+            <strong>Decreto 1357 de 2018</strong>
+            (Crowdfunding)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2018 -->
+      <article class="timeline-item" data-tipo="decreto">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2018</span>
+            <span class="type">Decreto</span>
+          </div>
+          <p>
+            <strong>Decreto 2443 de 2018</strong>
+            (Inversiones en Fintech por parte de entidades vigiladas
+            por la SFC)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2018 -->
+      <article class="timeline-item" data-tipo="circular">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2018</span>
+            <span class="type">Circular</span>
+          </div>
+          <p>
+            <strong>
+              Circular Externa Superintendencia Financiera de Colombia
+              (SFC) 007 de 2018
+            </strong>
+            (Ciberseguridad)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2018 -->
+      <article class="timeline-item" data-tipo="circular">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2018</span>
+            <span class="type">Circular</span>
+          </div>
+          <p>
+            <strong>
+              Circular Externa SFC 008 de 2018
+            </strong>
+            (Pasarelas de pago)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2019 -->
+      <article class="timeline-item" data-tipo="ley">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2019</span>
+            <span class="type">Ley</span>
+          </div>
+          <p>
+            <strong>Ley 1955 de 2019</strong>
+            (Espacio controlado de prueba —sandbox regulatorio—)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2019 -->
+      <article class="timeline-item" data-tipo="ley">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2019</span>
+            <span class="type">Ley</span>
+          </div>
+          <p>
+            <strong>Ley 2009 de 2019</strong>
+            (Ley de gratuidad de servicios financieros)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2019 -->
+      <article class="timeline-item" data-tipo="circular">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2019</span>
+            <span class="type">Circular</span>
+          </div>
+          <p>
+            <strong>
+              Circular Externa SFC 005 de 2019
+            </strong>
+            (Nube)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2020 -->
+      <article class="timeline-item" data-tipo="decreto">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2020</span>
+            <span class="type">Decreto</span>
+          </div>
+          <p>
+            <strong>Decreto 222 de 2020</strong>
+            (Productos financieros y corresponsales móviles y digitales)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2020 -->
+      <article class="timeline-item" data-tipo="decreto">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2020</span>
+            <span class="type">Decreto</span>
+          </div>
+          <p>
+            <strong>Decreto 1234 de 2020</strong>
+            (Espacio controlado de prueba —sandbox regulatorio—)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2022 -->
+      <article class="timeline-item" data-tipo="otros">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2022</span>
+            <span class="type">Otros</span>
+          </div>
+          <p>
+            <strong>Otros</strong>
+            (Colombia Fintech, 2022)
+          </p>
+        </div>
+      </article>
+
+
+      <!-- 2023 -->
+      <article class="timeline-item" data-tipo="otros">
+        <div class="card">
+          <div class="card-header">
+            <span class="year">2023</span>
+            <span class="type">Concepto</span>
+          </div>
+          <p>
+            <strong>
+              Concepto unificado 1621 de 2023 de la Dirección de
+              Impuestos y Aduanas Nacionales
+            </strong>
+            (criptoactivos)
+          </p>
+        </div>
+      </article>
+
+
+    </section>
+
+  </main>
+
+
+
+  <script>
+
+    /* =====================================
+       ELEMENTOS
+    ====================================== */
+
+    const items =
+      document.querySelectorAll(
+        ".timeline-item"
+      );
+
+    const filtros =
+      document.querySelectorAll(
+        ".filtro"
+      );
+
+
+    /* =====================================
+       ANIMACIÓN INICIAL
+    ====================================== */
+
+    function animarItems() {
+
+      const visibles =
+        [...items].filter(
+          item =>
+            !item.classList.contains(
+              "oculto"
+            )
+        );
+
+
+      visibles.forEach(
+        (item, indice) => {
+
+          item.classList.remove(
+            "mostrar"
+          );
+
+
+          setTimeout(
+            () => {
+
+              item.classList.add(
+                "mostrar"
+              );
+
+            },
+            indice * 90
+          );
+
+        }
+      );
+
+    }
+
+
+    animarItems();
+
+
+
+    /* =====================================
+       FILTROS
+    ====================================== */
+
+    filtros.forEach(
+      boton => {
+
+        boton.addEventListener(
+          "click",
+          () => {
+
+            filtros.forEach(
+              btn =>
+                btn.classList.remove(
+                  "activo"
+                )
+            );
+
+
+            boton.classList.add(
+              "activo"
+            );
+
+
+            const filtro =
+              boton.dataset.filtro;
+
+
+            items.forEach(
+              item => {
+
+                const tipo =
+                  item.dataset.tipo;
+
+
+                if (
+                  filtro === "todos" ||
+                  tipo === filtro
+                ) {
+
+                  item.classList.remove(
+                    "oculto"
+                  );
+
+                }
+
+                else {
+
+                  item.classList.add(
+                    "oculto"
+                  );
+
+                  item.classList.remove(
+                    "mostrar"
+                  );
+
+                }
+
+              }
+            );
+
+
+            animarItems();
+
+          }
+        );
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
