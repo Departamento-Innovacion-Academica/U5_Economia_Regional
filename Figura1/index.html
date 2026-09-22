@@ -25,16 +25,23 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+
+      font-family: "Poppins", sans-serif;
     }
 
     body {
-      font-family: "Poppins", sans-serif;
-
       background: #ffffff;
 
-      padding: 30px 20px;
+      padding: 20px;
 
       overflow-x: hidden;
+
+      /* 🔹 CENTRADO VERTICAL Y HORIZONTAL */
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
 
@@ -46,9 +53,9 @@
       position: relative;
 
       width: 100%;
-      max-width: 1400px;
+      max-width: 950px;    /* 🔹 antes 1400px */
 
-      height: 820px;
+      height: 560px;       /* 🔹 antes 820px */
 
       margin: 0 auto;
     }
@@ -69,17 +76,18 @@
 
       color: #ffffff;
 
-      border-radius: 30px;
+      border-radius: 20px;   /* 🔹 antes 30px */
 
-      padding: 20px;
+      padding: 14px;         /* 🔹 antes 20px */
 
       z-index: 2;
 
       opacity: 0;
 
+      /* 🔹 ANIMACIÓN MÁS LENTA (antes 0.9s) */
       animation:
         aparecer
-        0.9s
+        1.8s
         cubic-bezier(.22,1,.36,1)
         forwards;
     }
@@ -105,21 +113,21 @@
     ========================================== */
 
     .mercado {
-      width: 340px;
-      height: 180px;
+      width: 230px;        /* 🔹 antes 340px */
+      height: 120px;       /* 🔹 antes 180px */
 
       left: 0;
-      top: 310px;
+      top: 210px;          /* 🔹 antes 310px */
 
       background: #032B4D;
 
-      font-size: 1.9rem;
+      font-size: 1.3rem;   /* 🔹 antes 1.9rem */
 
       font-weight: 700;
 
       line-height: 1.2;
 
-      animation-delay: .1s;
+      animation-delay: .2s;
     }
 
 
@@ -128,19 +136,19 @@
     ========================================== */
 
     .intermediado {
-      width: 360px;
-      height: 180px;
+      width: 245px;        /* 🔹 antes 360px */
+      height: 120px;       /* 🔹 antes 180px */
 
-      left: 430px;
-      top: 170px;
+      left: 290px;         /* 🔹 antes 430px */
+      top: 115px;          /* 🔹 antes 170px */
 
       background: #3F6F98;
 
-      font-size: 1.45rem;
+      font-size: 1rem;     /* 🔹 antes 1.45rem */
 
       font-weight: 400;
 
-      animation-delay: .45s;
+      animation-delay: 1s;
     }
 
 
@@ -149,19 +157,19 @@
     ========================================== */
 
     .no-intermediado {
-      width: 360px;
-      height: 180px;
+      width: 245px;        /* 🔹 antes 360px */
+      height: 120px;       /* 🔹 antes 180px */
 
-      left: 430px;
-      top: 520px;
+      left: 290px;         /* 🔹 antes 430px */
+      top: 355px;          /* 🔹 antes 520px */
 
       background: #3F6F98;
 
-      font-size: 1.4rem;
+      font-size: .95rem;   /* 🔹 antes 1.4rem */
 
       font-weight: 400;
 
-      animation-delay: .65s;
+      animation-delay: 1.4s;
     }
 
 
@@ -170,18 +178,20 @@
     ========================================== */
 
     .derecha {
-      width: 255px;
-      height: 150px;
+      width: 175px;        /* 🔹 antes 255px */
+      height: 100px;       /* 🔹 antes 150px */
 
       right: 0;
 
       background: #49419B;
 
-      font-size: 1.12rem;
+      font-size: .78rem;   /* 🔹 antes 1.12rem */
 
       font-weight: 400;
 
       line-height: 1.18;
+
+      transform: translateX(90px);
 
       animation-name: entrarDerecha;
     }
@@ -191,7 +201,7 @@
 
       from {
         opacity: 0;
-        transform: translateX(130px);
+        transform: translateX(90px);
       }
 
       to {
@@ -203,31 +213,31 @@
 
 
     .derecha-1 {
-      top: 10px;
-      animation-delay: .9s;
+      top: 6px;
+      animation-delay: 2s;
     }
 
     .derecha-2 {
-      top: 180px;
-      animation-delay: 1.05s;
+      top: 122px;
+      animation-delay: 2.4s;
     }
 
     .derecha-3 {
-      top: 350px;
-      animation-delay: 1.2s;
+      top: 238px;
+      animation-delay: 2.8s;
     }
 
     .derecha-4 {
-      top: 520px;
-      animation-delay: 1.35s;
+      top: 354px;
+      animation-delay: 3.2s;
     }
 
     .mercado-valores {
-      top: 690px;
+      top: 470px;
 
       font-weight: 700;
 
-      animation-delay: 1.5s;
+      animation-delay: 3.6s;
     }
 
 
@@ -253,7 +263,7 @@
     .linea {
       stroke: #032B4D;
 
-      stroke-width: 8;
+      stroke-width: 5;     /* 🔹 antes 8 */
 
       fill: none;
 
@@ -263,9 +273,10 @@
 
       stroke-dashoffset: 1000;
 
+      /* 🔹 MÁS LENTO (antes 1s) */
       animation:
         dibujarLinea
-        1s
+        2.2s
         ease
         forwards;
     }
@@ -280,33 +291,13 @@
     }
 
 
-    .linea-1 {
-      animation-delay: .25s;
-    }
-
-    .linea-2 {
-      animation-delay: .35s;
-    }
-
-    .linea-3 {
-      animation-delay: .75s;
-    }
-
-    .linea-4 {
-      animation-delay: .9s;
-    }
-
-    .linea-5 {
-      animation-delay: 1.05s;
-    }
-
-    .linea-6 {
-      animation-delay: 1.2s;
-    }
-
-    .linea-7 {
-      animation-delay: 1.35s;
-    }
+    .linea-1 { animation-delay: .5s; }
+    .linea-2 { animation-delay: .8s; }
+    .linea-3 { animation-delay: 1.7s; }
+    .linea-4 { animation-delay: 2s; }
+    .linea-5 { animation-delay: 2.3s; }
+    .linea-6 { animation-delay: 2.6s; }
+    .linea-7 { animation-delay: 2.9s; }
 
 
     /* =========================================
@@ -322,7 +313,7 @@
 
         flex-direction: column;
 
-        gap: 20px;
+        gap: 14px;
       }
 
 
@@ -335,9 +326,11 @@
 
         width: 100%;
 
-        min-height: 110px;
+        min-height: 80px;
 
         height: auto;
+
+        font-size: .85rem;
       }
 
 
@@ -382,91 +375,51 @@
 
     <svg
       class="lineas"
-      viewBox="0 0 1400 820"
+      viewBox="0 0 950 560"
       preserveAspectRatio="none"
     >
 
-
-      <!-- =================================
-           MERCADO DE CAPITALES
-           CENTRO DERECHO:
-           x = 340
-           y = 400
-      ================================== -->
-
-
-      <!-- hacia intermediado -->
+      <!-- MERCADO DE CAPITALES → intermediado -->
       <path
         class="linea linea-1"
-        d="M340 400 L430 260"
+        d="M230 270 L290 175"
       />
 
-
-      <!-- hacia no intermediado -->
+      <!-- MERCADO DE CAPITALES → no intermediado -->
       <path
         class="linea linea-2"
-        d="M340 400 L430 610"
+        d="M230 270 L290 415"
       />
 
-
-
-      <!-- =================================
-           INTERMEDIADO BANCARIO
-
-           lado derecho:
-           x = 790
-
-           centro:
-           y = 260
-      ================================== -->
-
-
-      <!-- bloque superior -->
+      <!-- INTERMEDIADO → bloque 1 -->
       <path
         class="linea linea-3"
-        d="M790 260 L1145 85"
+        d="M535 175 L775 56"
       />
 
-
-      <!-- segundo bloque -->
+      <!-- INTERMEDIADO → bloque 2 -->
       <path
         class="linea linea-4"
-        d="M790 260 L1145 255"
+        d="M535 175 L775 172"
       />
 
-
-      <!-- tercer bloque -->
+      <!-- INTERMEDIADO → bloque 3 -->
       <path
         class="linea linea-5"
-        d="M790 260 L1145 425"
+        d="M535 175 L775 288"
       />
 
-
-      <!-- cuarto bloque -->
+      <!-- INTERMEDIADO → bloque 4 -->
       <path
         class="linea linea-6"
-        d="M790 260 L1145 595"
+        d="M535 175 L775 404"
       />
 
-
-
-      <!-- =================================
-           NO INTERMEDIADO
-
-           lado derecho:
-           x = 790
-
-           centro:
-           y = 610
-      ================================== -->
-
-
-      <!-- mercado de valores -->
+      <!-- NO INTERMEDIADO → mercado de valores -->
       <path
         class="linea linea-7"
-        d="M790 610 L1145 765"
+        d="M535 415 L775 520"
       />
-
 
     </svg>
 
@@ -519,38 +472,30 @@
     ====================================== -->
 
     <section class="bloque derecha derecha-1">
-
       Establecimientos
       <br>
       de Crédito
-
     </section>
 
 
     <section class="bloque derecha derecha-2">
-
       Establecimientos
       <br>
       de Crédito
-
     </section>
 
 
     <section class="bloque derecha derecha-3">
-
       Establecimientos
       <br>
       de Crédito
-
     </section>
 
 
     <section class="bloque derecha derecha-4">
-
       Establecimientos
       <br>
       de Crédito
-
     </section>
 
 
