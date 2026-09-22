@@ -25,12 +25,13 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+
+      font-family: "Poppins", sans-serif;
     }
 
     body {
-      font-family: "Poppins", sans-serif;
       background: #ffffff;
-      padding: 20px;
+      padding: 16px;
 
       min-height: 100vh;
 
@@ -44,8 +45,8 @@
     .diagrama {
       position: relative;
       width: 100%;
-      max-width: 980px;
-      height: 620px;
+      max-width: 720px;    /* 🔹 antes 980px */
+      height: 460px;       /* 🔹 antes 620px */
       margin: 0 auto;
     }
 
@@ -65,15 +66,14 @@
 
       color: #ffffff;
 
-      border-radius: 18px;
+      border-radius: 14px;   /* 🔹 antes 18px */
 
-      padding: 14px;
+      padding: 10px;         /* 🔹 antes 14px */
 
       z-index: 2;
 
       opacity: 0;
 
-      /* 🔹 ANIMACIÓN MÁS LENTA (antes 0.9s) */
       animation:
         aparecer
         2s
@@ -100,14 +100,14 @@
 
     .principal {
       left: 0;
-      top: 235px;
+      top: 174px;          /* 🔹 antes 235px */
 
-      width: 235px;
-      height: 120px;
+      width: 170px;        /* 🔹 antes 235px */
+      height: 90px;        /* 🔹 antes 120px */
 
       background: #032B4D;
 
-      font-size: 1rem;
+      font-size: .78rem;   /* 🔹 antes 1rem */
       line-height: 1.25;
 
       font-weight: 400;
@@ -121,24 +121,24 @@
     ========================================== */
 
     .autoridad {
-      left: 505px;
+      left: 365px;         /* 🔹 antes 505px */
 
-      width: 170px;
-      height: 105px;
+      width: 125px;        /* 🔹 antes 170px */
+      height: 80px;        /* 🔹 antes 105px */
 
       background: #3F6F98;
 
-      font-size: 0.78rem;
+      font-size: .6rem;    /* 🔹 antes .78rem */
       line-height: 1.2;
 
       font-weight: 400;
     }
 
-    .a1 { top: 10px;  animation-delay: 1s; }
-    .a2 { top: 132px; animation-delay: 1.4s; }
-    .a3 { top: 254px; animation-delay: 1.8s; }
-    .a4 { top: 376px; animation-delay: 2.2s; }
-    .a5 { top: 498px; animation-delay: 2.6s; }
+    .a1 { top: 8px;   animation-delay: 1s; }
+    .a2 { top: 98px;  animation-delay: 1.4s; }
+    .a3 { top: 188px; animation-delay: 1.8s; }
+    .a4 { top: 278px; animation-delay: 2.2s; }
+    .a5 { top: 368px; animation-delay: 2.6s; }
 
 
     /* =========================================
@@ -148,17 +148,17 @@
     .funcion {
       right: 0;
 
-      width: 170px;
-      height: 105px;
+      width: 125px;        /* 🔹 antes 170px */
+      height: 80px;        /* 🔹 antes 105px */
 
       background: #49419B;
 
-      font-size: 0.72rem;
+      font-size: .56rem;   /* 🔹 antes .72rem */
       line-height: 1.25;
 
       font-weight: 400;
 
-      transform: translateX(80px);
+      transform: translateX(60px);
 
       animation-name: entrarDerecha;
     }
@@ -166,7 +166,7 @@
     @keyframes entrarDerecha {
       from {
         opacity: 0;
-        transform: translateX(80px);
+        transform: translateX(60px);
       }
 
       to {
@@ -175,11 +175,11 @@
       }
     }
 
-    .f1 { top: 10px;  animation-delay: 1.7s; }
-    .f2 { top: 132px; animation-delay: 2.1s; }
-    .f3 { top: 254px; animation-delay: 2.5s; }
-    .f4 { top: 376px; animation-delay: 2.9s; }
-    .f5 { top: 498px; animation-delay: 3.3s; }
+    .f1 { top: 8px;   animation-delay: 1.7s; }
+    .f2 { top: 98px;  animation-delay: 2.1s; }
+    .f3 { top: 188px; animation-delay: 2.5s; }
+    .f4 { top: 278px; animation-delay: 2.9s; }
+    .f5 { top: 368px; animation-delay: 3.3s; }
 
 
     /* =========================================
@@ -200,7 +200,7 @@
 
     .linea {
       stroke: #032B4D;
-      stroke-width: 5;
+      stroke-width: 4;     /* 🔹 antes 5 */
 
       fill: none;
 
@@ -209,7 +209,6 @@
       stroke-dasharray: 1400;
       stroke-dashoffset: 1400;
 
-      /* 🔹 LÍNEAS MÁS LENTAS (antes 1s) */
       animation:
         dibujarLinea
         2.4s ease
@@ -222,7 +221,6 @@
       }
     }
 
-    /* 🔹 Delays más espaciados para que fluya lento y escalonado */
     .l1 { animation-delay: .4s; }
     .l2 { animation-delay: .7s; }
     .l3 { animation-delay: 1s; }
@@ -240,7 +238,7 @@
        RESPONSIVE
     ========================================== */
 
-    @media (max-width: 1050px) {
+    @media (max-width: 800px) {
 
       .diagrama {
         height: auto;
@@ -248,7 +246,7 @@
         display: flex;
         flex-direction: column;
 
-        gap: 12px;
+        gap: 10px;
       }
 
       .bloque {
@@ -261,9 +259,9 @@
         width: 100%;
         height: auto;
 
-        min-height: 75px;
+        min-height: 62px;
 
-        font-size: 0.85rem;
+        font-size: .75rem;
       }
 
       .lineas {
@@ -272,7 +270,7 @@
 
       .principal {
         order: 1;
-        font-size: 1rem;
+        font-size: .85rem;
       }
 
       .a1 { order: 2; }
@@ -322,21 +320,21 @@
 
     <svg
       class="lineas"
-      viewBox="0 0 980 620"
+      viewBox="0 0 720 460"
       preserveAspectRatio="none"
     >
 
-      <path class="linea l1" d="M235 295 L505 62" />
-      <path class="linea l2" d="M235 295 L505 184" />
-      <path class="linea l3" d="M235 295 L505 306" />
-      <path class="linea l4" d="M235 295 L505 428" />
-      <path class="linea l5" d="M235 295 L505 550" />
+      <path class="linea l1" d="M170 219 L365 46" />
+      <path class="linea l2" d="M170 219 L365 136" />
+      <path class="linea l3" d="M170 219 L365 226" />
+      <path class="linea l4" d="M170 219 L365 316" />
+      <path class="linea l5" d="M170 219 L365 406" />
 
-      <path class="linea lr1" d="M675 62  L810 62" />
-      <path class="linea lr2" d="M675 184 L810 184" />
-      <path class="linea lr3" d="M675 306 L810 306" />
-      <path class="linea lr4" d="M675 428 L810 428" />
-      <path class="linea lr5" d="M675 550 L810 550" />
+      <path class="linea lr1" d="M490 46  L595 46" />
+      <path class="linea lr2" d="M490 136 L595 136" />
+      <path class="linea lr3" d="M490 226 L595 226" />
+      <path class="linea lr4" d="M490 316 L595 316" />
+      <path class="linea lr5" d="M490 406 L595 406" />
 
     </svg>
 
